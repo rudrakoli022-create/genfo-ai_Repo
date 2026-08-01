@@ -1,0 +1,35 @@
+{
+  "name": "genfo-ai-backend",
+  "version": "1.0.0",
+  "description": "Production-ready backend for Genfo AI - Auth, Google OAuth, Razorpay Payments",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^8.5.2",
+    "google-auth-library": "^9.15.0",
+    "helmet": "^8.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mammoth": "^1.8.0",
+    "mongoose": "^8.9.5",
+    "multer": "^1.4.5-lts.1",
+    "pdf-parse": "^1.1.1",
+    "razorpay": "^2.9.6",
+    "xlsx": "^0.18.5",
+    "xss": "^1.0.15"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
