@@ -1,7 +1,7 @@
 const {
   generateImage,
   ALLOWED_ASPECT_RATIOS,
-} = require("../services/imagegenservice");
+} = require("../services/imageGenService");
 const { describeImage } = require("../services/openrouterService");
 const Attachment = require("../models/Attachment");
 const Conversation = require("../models/Conversation");
