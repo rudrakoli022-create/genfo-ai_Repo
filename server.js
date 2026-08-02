@@ -11,7 +11,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const validateEnv = require("./config/validateEnv");
 const connectDB = require("./config/db");
 const { errorHandler, notFound } = require("./middleware/errorMiddleware");
-const { generalLimiter, authLimiter, chatLimiter, paymentLimiter, imageLimiter, uploadLimiter } = require("./middleware/ratelimiters");
+const { generalLimiter, authLimiter, chatLimiter, paymentLimiter, imageLimiter, uploadLimiter } = require("./middleware/RateLimiters");
 
 const authRoutes = require("./routes/authRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
