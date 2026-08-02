@@ -11,7 +11,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const validateEnv = require("./config/validateEnv");
 const connectDB = require("./config/db");
 const { errorHandler, notFound } = require("./middleware/errorMiddleware");
-const { generalLimiter, authLimiter, chatLimiter, paymentLimiter, imageLimiter, uploadLimiter } = require("./middleware/RateLimiters");
+const { generalLimiter, authLimiter, chatLimiter, paymentLimiter, imageLimiter, uploadLimiter } = require("./middleware/ratelimiters");
 
 const authRoutes = require("./routes/authRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
@@ -42,12 +42,25 @@ const allowedOrigins = (process.env.CLIENT_URL || "*")
   .map((o) => o.trim().replace(/\/+$/, ""))
   .filter(Boolean);
 
+// Browser extensions have an origin like chrome-extension://<extension-id>.
+// Listed separately (not folded into CLIENT_URL) so it's obvious this is a
+// different trust boundary — only IDs you explicitly add here are allowed,
+// e.g. EXTENSION_IDS="pcmkgonmmfhiichcfbcimcmhkbfoeppc,anotheridhere"
+const allowedExtensionOrigins = (process.env.EXTENSION_IDS || "")
+  .split(",")
+  .map((id) => id.trim())
+  .filter(Boolean)
+  .map((id) => `chrome-extension://${id}`);
+
 app.use(
   cors({
     origin: function (origin, callback) {
       // allow non-browser requests (curl, server-to-server, no Origin header)
       if (!origin) return callback(null, true);
       if (allowedOrigins.includes("*") || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      if (allowedExtensionOrigins.includes(origin)) {
         return callback(null, true);
       }
       return callback(new Error(`CORS blocked: origin ${origin} not in allowlist`));
