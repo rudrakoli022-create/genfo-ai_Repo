@@ -11,7 +11,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const validateEnv = require("./config/validateEnv");
 const connectDB = require("./config/db");
 const { errorHandler, notFound } = require("./middleware/errorMiddleware");
-const { generalLimiter, authLimiter, chatLimiter, paymentLimiter, imageLimiter, uploadLimiter } = require("./middleware/RateLimiters");
+const { generalLimiter, authLimiter, chatLimiter, paymentLimiter, imageLimiter, uploadLimiter } = require("./middleware/ratelimiters");
 
 const authRoutes = require("./routes/authRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
@@ -35,9 +35,23 @@ app.set("trust proxy", 1);
 
 // 3. Global security + parsing middleware
 app.use(helmet());
+// Support comma-separated CLIENT_URL(s) in env, e.g. "https://genfoai.netlify.app,http://localhost:5173"
+// Trailing slashes are stripped so a stray "/" in the env var can't break origin matching.
+const allowedOrigins = (process.env.CLIENT_URL || "*")
+  .split(",")
+  .map((o) => o.trim().replace(/\/+$/, ""))
+  .filter(Boolean);
+
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "*",
+    origin: function (origin, callback) {
+      // allow non-browser requests (curl, server-to-server, no Origin header)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes("*") || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error(`CORS blocked: origin ${origin} not in allowlist`));
+    },
     credentials: true,
     exposedHeaders: ["X-Images-Remaining", "X-Image-Limit", "X-User-Plan", "X-Conversation-Id"],
   })
