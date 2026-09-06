@@ -1,0 +1,119 @@
+/* ==========================================================================
+   GENFO AI — CODE BLOCK STYLES
+   New, additive file. Link this AFTER imagebubble.css so it can inherit
+   your design tokens (colors, radii, fonts) via CSS variables. Renders
+   fenced code from AI replies as its own panel, the same way image
+   generations get their own bubble.
+   ========================================================================== */
+
+.code-block {
+  margin-top: 8px;
+  margin-bottom: 4px;
+  border-radius: var(--radius-lg, 16px);
+  overflow: hidden;
+  background: var(--bg-raised-2, rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  max-width: 100%;
+}
+
+.code-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 8px 8px 14px;
+  background: var(--glass-fill, rgba(255, 255, 255, 0.045));
+  border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.07));
+}
+
+.code-block-lang {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: var(--fs-caption, 0.75rem);
+  letter-spacing: var(--ls-wide, 0.08em);
+  text-transform: uppercase;
+  color: var(--text-tertiary, rgba(255, 255, 255, 0.45));
+}
+
+.code-block-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.code-block-btn {
+  appearance: none;
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.12));
+  background: var(--bg-raised, rgba(255, 255, 255, 0.06));
+  color: var(--text-primary, #fff);
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.78rem;
+  padding: 5px 11px;
+  border-radius: var(--radius-full, 999px);
+  cursor: pointer;
+  transition: background var(--dur-fast, 140ms) ease, border-color var(--dur-fast, 140ms) ease, color var(--dur-fast, 140ms) ease;
+}
+
+.code-block-btn:hover {
+  background: var(--glass-fill-hi, rgba(255, 255, 255, 0.1));
+  border-color: var(--border-default, rgba(255, 255, 255, 0.2));
+}
+
+.code-block-btn:active {
+  transform: translateY(1px);
+}
+
+.code-block-btn.is-copied {
+  color: var(--color-success, #36e0a0);
+  border-color: var(--color-success, #36e0a0);
+}
+
+.code-block-pre {
+  margin: 0;
+  padding: 14px 16px;
+  overflow-x: auto;
+  background: var(--bg-void, #05060a);
+}
+
+.code-block-pre code,
+.code-block-pre code.hljs {
+  display: block;
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.85rem;
+  line-height: var(--lh-normal, 1.6);
+  color: var(--text-primary, #f3f5fb);
+  background: transparent;
+  white-space: pre;
+  tab-size: 2;
+}
+
+/* Scrollbar polish inside code panels */
+.code-block-pre::-webkit-scrollbar {
+  height: 8px;
+}
+.code-block-pre::-webkit-scrollbar-thumb {
+  background: var(--border-default, rgba(255, 255, 255, 0.12));
+  border-radius: var(--radius-full, 999px);
+}
+.code-block-pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Paragraph wrapper for prose segments split around code blocks */
+.chat-msg-paragraph + .code-block,
+.code-block + .chat-msg-paragraph {
+  margin-top: 10px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 560px) {
+  .code-block-header {
+    padding: 8px 8px 8px 12px;
+  }
+  .code-block-pre {
+    padding: 12px 14px;
+  }
+  .code-block-pre code,
+  .code-block-pre code.hljs {
+    font-size: 0.8rem;
+  }
+}

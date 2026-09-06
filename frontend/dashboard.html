@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Genfo AI</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%226%22 fill=%22%238c6bff%22/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/chrome.css" />
+  <link rel="stylesheet" href="css/app.css" />
+  <link rel="stylesheet"49 href="css/imagebubble.css">
+  <link rel="stylesheet" href="css/codeblock.css">
+  <!-- Syntax highlighting for code blocks in chat replies -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/tomorrow-night.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-54WY6TJESL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-54WY6TJESL');
+  </script>
+</head>
+<body>
+  <div class="sidebar-backdrop"></div>
+
+  <div class="app-shell">
+    <!-- ============================== SIDEBAR ============================== -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <a href="index.html" class="brand"><span class="brand-mark" aria-hidden="true"></span>Genfo AI</a>
+      </div>
+
+      <button type="button" class="btn btn-secondary btn-block sidebar-new-chat" data-action="new-chat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+        New chat
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Dashboard">
+        <a href="dashboard.html" class="sidebar-link is-active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12l9-9 9 9M5 10v10h14V10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Home
+        </a>
+        <a href="dashboard.html" class="sidebar-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Chat
+        </a>
+        <a href="settings.html" class="sidebar-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Settings
+        </a>
+      </nav>
+
+      <p class="sidebar-section-label">Recent</p>
+      <div class="sidebar-history" data-empty-label="No conversations yet">
+      </div>
+
+      <div class="sidebar-memory">
+        <div class="sidebar-memory-header">
+          <p class="sidebar-section-label" style="margin:0;">Memory</p>
+          <button type="button" class="memory-clear-btn" data-action="clear-memory" title="Forget everything Genfo AI has learned about you">Clear</button>
+        </div>
+        <div class="memory-list" data-empty-label="No memory yet — mention things about yourself and Genfo AI will remember them here.">
+        </div>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="upgrade-card" data-if-free>
+          <h4>You're on the Free plan</h4>
+          <p>Upgrade to Pro for unlimited messages and priority speed.</p>
+          <button type="button" class="btn btn-primary btn-block" data-action="upgrade" data-amount="99" style="margin-top: var(--space-4);">
+            <span class="btn-label">Upgrade to Pro — ₹99/mo</span>
+            <span class="spinner"></span>
+          </button>
+        </div>
+
+        <div class="user-card">
+          <div class="avatar" data-user-initial>?</div>
+          <div class="user-card-info">
+            <div class="user-card-name" data-user-name>Loading…</div>
+            <div class="user-card-plan" data-user-plan>—</div>
+          </div>
+          <svg class="user-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 9l4-4 4 4M16 15l-4 4-4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+          <div class="profile-menu">
+            <a href="settings.html">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82" stroke-linecap="round"/></svg>
+              Settings
+            </a>
+            <a href="settings.html">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 1l9 4v6c0 5-4 8-9 11-5-3-9-6-9-11V5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Billing
+            </a>
+            <hr />
+            <button type="button" data-action="logout">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Log out
+            </button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ============================== MAIN ============================== -->
+    <main class="app-main">
+      <div class="app-topbar">
+        <div class="app-topbar-left">
+          <button class="sidebar-mobile-toggle" aria-label="Toggle sidebar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+          </button>
+          <h1>Chat</h1>
+        </div>
+        <span class="badge badge-accent"><span class="badge-dot"></span>Online</span>
+      </div>
+
+      <section class="chat-view">
+        <div class="chat-scroll">
+          <div class="chat-empty">
+            <div class="chat-empty-mark" aria-hidden="true"></div>
+            <h2>What are we building today?</h2>
+            <p>Ask anything — write code, plan a project, or think through a decision out loud.</p>
+            <div class="suggestion-grid">
+              <button class="suggestion-chip glass-panel">Write a function to debounce a search input</button>
+              <button class="suggestion-chip glass-panel">Plan a launch checklist for a new feature</button>
+              <button class="suggestion-chip glass-panel">Explain JWT auth like I'm new to it</button>
+              <button class="suggestion-chip glass-panel">Draft a polite follow-up email</button>
+            </div>
+          </div>
+          <div class="chat-thread" style="display:none;"></div>
+        </div>
+
+        <div class="chat-input-zone">
+          <div class="attachment-tray" style="display:none;"></div>
+          <form class="chat-input-bar glass-panel">
+            <input type="file" class="chat-file-input" multiple hidden
+              accept=".png,.jpg,.jpeg,.webp,.gif,.pdf,.docx,.txt,.md,.csv,.xlsx,.json,.js,.ts,.jsx,.tsx,.html,.css,.py,.java,.c,.cpp,.cs,.php,.go,.rs,.sql,.xml,.yaml,.yml" />
+            <button type="button" class="chat-attach-btn" aria-label="Attach files">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a5 5 0 0 1-7.07-7.07l9.19-9.19a3.5 3.5 0 0 1 4.95 4.95l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <textarea rows="1" placeholder="Message Genfo AI…" aria-label="Message Genfo AI"></textarea>
+            <button type="submit" class="chat-send-btn" disabled aria-label="Send message">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </form>
+          <p class="chat-input-note">Genfo AI can make mistakes. Check important info. You can attach images, PDFs, docs, and code files.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/ui.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/billing.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

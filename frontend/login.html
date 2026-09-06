@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log in — Genfo AI</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%226%22 fill=%22%238c6bff%22/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/chrome.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-54WY6TJESL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-54WY6TJESL');
+</script>
+</head>
+<body>
+  <div class="auth-shell">
+    <!-- Left showcase panel -->
+    <aside class="auth-aside">
+      <span class="auth-orb" aria-hidden="true"></span>
+      <div class="auth-aside-top">
+        <a href="index.html" class="brand"><span class="brand-mark" aria-hidden="true"></span>Genfo AI</a>
+      </div>
+      <div class="auth-aside-content">
+        <p class="eyebrow">Welcome back</p>
+        <h2>Pick up exactly where you left off.</h2>
+        <p>Your conversations, account, and plan are all waiting on the other side.</p>
+        <div class="auth-quote">
+          <blockquote>"Genfo AI cut our first-draft time in half. It's the first AI tool that actually fit how we already work."</blockquote>
+          <cite>— Early access user</cite>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Right form panel -->
+    <main class="auth-main">
+      <a href="index.html" class="auth-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Back home
+      </a>
+
+      <div class="auth-card glass-panel">
+        <div class="auth-mobile-brand brand"><span class="brand-mark" aria-hidden="true"></span>Genfo AI</div>
+
+        <div class="auth-card-header">
+          <h1>Log in</h1>
+          <p>New here? <a href="signup.html">Create an account</a></p>
+        </div>
+
+        <div class="alert alert-error" role="alert">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01" stroke-linecap="round"/></svg>
+          <span></span>
+        </div>
+
+        <div class="social-row">
+          <button type="button" class="btn btn-social" data-social="google">
+            <svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.6 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.1 8 3l5.7-5.7C34.6 6 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-4z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.4 16 18.9 13 24 13c3.1 0 5.9 1.1 8 3l5.7-5.7C34.6 6 29.6 4 24 4c-7.5 0-14 4.2-17.7 10.7z"/><path fill="#4CAF50" d="M24 44c5.5 0 10.4-1.8 14.1-5l-6.5-5.4C29.5 35.4 26.9 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.6 5.1C9.9 39.6 16.4 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-1 2.8-2.9 5.1-5.4 6.6l6.5 5.4C40.3 36.8 44 31 44 24c0-1.3-.1-2.7-.4-3.5z"/></svg>
+            Continue with Google
+          </button>
+        </div>
+
+        <div class="divider">or log in with email</div>
+
+        <form id="login-form" novalidate>
+          <div class="field">
+            <label class="field-label" for="login-email">Email address</label>
+            <div class="field-input-wrap">
+              <input class="field-input" type="email" id="login-email" name="email" placeholder="you@company.com" autocomplete="email" required />
+            </div>
+            <span class="field-error"></span>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="login-password">Password</label>
+            <div class="field-input-wrap">
+              <input class="field-input" type="password" id="login-password" name="password" placeholder="••••••••" autocomplete="current-password" required />
+              <button type="button" class="field-toggle-visibility" aria-label="Show password">
+                <svg class="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg class="icon-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="display:none"><path d="M17.94 17.94A10.94 10.94 0 0112 19c-7 0-11-7-11-7a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 7 11 7a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24" stroke-linecap="round" stroke-linejoin="round"/><path d="M1 1l22 22" stroke-linecap="round"/></svg>
+              </button>
+            </div>
+            <span class="field-error"></span>
+          </div>
+
+          <div class="form-options">
+            <label class="checkbox-row"><input type="checkbox" name="remember" /> Remember me</label>
+            <a href="#" class="link-muted">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg">
+            <span class="btn-label">Log in</span>
+            <span class="spinner"></span>
+          </button>
+        </form>
+
+        <p class="auth-footer-note">By continuing, you agree to Genfo AI's <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/ui.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/billing.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

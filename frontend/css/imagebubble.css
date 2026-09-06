@@ -1,0 +1,363 @@
+/* ==========================================================================
+   GENFO AI — IMAGE BUBBLE STYLES
+   New, additive file. Link this AFTER your existing dashboard.css so it can
+   inherit your design tokens (colors, radii, fonts) via CSS variables.
+   Uses generic var() fallbacks so it still renders sanely if a token is
+   missing — replace fallbacks with your actual tokens.css values as needed.
+   ========================================================================== */
+
+   .image-bubble {
+    margin-top: 6px;
+    max-width: 360px;
+    border-radius: var(--radius-lg, 16px);
+    overflow: hidden;
+    background: var(--surface-2, rgba(255, 255, 255, 0.04));
+    border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  }
+  
+  /* ---- Loading state ---- */
+  .image-bubble-loading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 18px;
+    color: var(--text-secondary, rgba(255, 255, 255, 0.65));
+    font-size: 0.9rem;
+  }
+  
+  .image-bubble-loading-text {
+    font-family: var(--font-body, "Inter", sans-serif);
+  }
+  
+  /* ---- Result state ---- */
+  .image-bubble-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    background: var(--surface-3, rgba(255, 255, 255, 0.06));
+  }
+  
+  .image-bubble-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+  
+  .image-bubble-btn {
+    appearance: none;
+    border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.12));
+    background: var(--surface-3, rgba(255, 255, 255, 0.06));
+    color: var(--text-primary, #fff);
+    font-family: var(--font-body, "Inter", sans-serif);
+    font-size: 0.8rem;
+    padding: 6px 12px;
+    border-radius: var(--radius-full, 999px);
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  
+  .image-bubble-btn:hover {
+    background: var(--surface-4, rgba(255, 255, 255, 0.1));
+    border-color: var(--border-strong, rgba(255, 255, 255, 0.2));
+  }
+  
+  .image-bubble-btn:active {
+    transform: translateY(1px);
+  }
+  
+  .image-bubble-remaining {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: var(--text-tertiary, rgba(255, 255, 255, 0.45));
+    font-family: var(--font-mono, "JetBrains Mono", monospace);
+  }
+  
+  /* ---- Error state ---- */
+  .image-bubble-error {
+    padding: 16px 18px;
+    color: var(--color-error, #ff6b6b);
+    font-size: 0.88rem;
+    font-family: var(--font-body, "Inter", sans-serif);
+  }
+  
+  .image-bubble[data-state="error"] {
+    border-color: var(--color-error, #ff6b6b);
+  }
+  
+  /* ---- Responsive ---- */
+  @media (max-width: 560px) {
+    .image-bubble {
+      max-width: 100%;
+    }
+  }
+/* ==========================================================================
+   UPGRADE MODAL — shown when a Free-plan user hits the daily image limit
+   ========================================================================== */
+.upgrade-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--bg-overlay);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4, 1rem);
+  animation: upgradeModalFadeIn 0.18s ease-out;
+}
+
+.upgrade-modal {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  background: var(--bg-raised);
+  border: 1px solid var(--glass-border-hi);
+  border-radius: 20px;
+  padding: 2rem 1.75rem 1.75rem;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  animation: upgradeModalPopIn 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+.upgrade-modal-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-on-accent);
+  background: var(--aurora-gradient);
+  border-radius: 999px;
+}
+
+.upgrade-modal h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem;
+  color: var(--text-primary);
+}
+
+.upgrade-modal p {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin: 0 0 1.5rem;
+}
+
+.upgrade-modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.9rem;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--text-tertiary);
+  cursor: pointer;
+}
+.upgrade-modal-close:hover {
+  color: var(--text-primary);
+}
+
+@keyframes upgradeModalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes upgradeModalPopIn {
+  from { opacity: 0; transform: translateY(8px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---- Plan badge inside image bubbles ---- */
+.image-bubble-badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border-radius: 999px;
+  color: var(--text-on-accent);
+  background: var(--aurora-gradient);
+  margin-right: 0.5rem;
+}
+
+/* ==========================================================================
+   FILE ATTACHMENTS — attach button, upload tray, chips, drop zone
+   ========================================================================== */
+
+.chat-attach-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-fill);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.chat-attach-btn:hover {
+  background: var(--glass-fill-hi);
+  color: var(--text-primary);
+  border-color: var(--glass-border-hi);
+}
+.chat-attach-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ---- Drag & drop overlay on the whole chat view ---- */
+.chat-view.is-drag-over {
+  position: relative;
+}
+.chat-view.is-drag-over::after {
+  content: "Drop files to attach";
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  background: rgba(10, 12, 20, 0.55);
+  backdrop-filter: blur(3px);
+  border: 2px dashed var(--aurora-cyan);
+  border-radius: var(--radius-lg);
+  pointer-events: none;
+}
+
+/* ---- Attachment tray (above the composer, before sending) ---- */
+.attachment-tray {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: 0 var(--space-2) var(--space-2);
+}
+
+.attachment-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.5rem;
+  max-width: 220px;
+  background: var(--bg-raised-2);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.attachment-chip-thumb {
+  width: 26px;
+  height: 26px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.attachment-chip-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.attachment-chip-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-primary);
+  max-width: 120px;
+}
+
+.attachment-chip-size {
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
+
+.attachment-chip-remove {
+  background: none;
+  border: none;
+  color: var(--text-tertiary);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0.15rem;
+  flex-shrink: 0;
+}
+.attachment-chip-remove:hover {
+  color: var(--color-error);
+}
+
+.attachment-chip.is-error {
+  border-color: rgba(255, 92, 122, 0.4);
+}
+.attachment-chip-error {
+  color: var(--color-error);
+  font-size: 0.72rem;
+  flex-shrink: 0;
+}
+.attachment-chip-retry {
+  background: none;
+  border: none;
+  color: var(--aurora-cyan);
+  font-size: 0.72rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  text-decoration: underline;
+}
+
+.attachment-chip.is-uploading {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+.attachment-progress {
+  width: 100%;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+.attachment-progress-bar {
+  height: 100%;
+  background: var(--aurora-gradient);
+  transition: width 0.15s ease;
+}
+
+/* ---- Attachment chips shown inside a sent chat bubble ---- */
+.msg-attachment-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: 0.4rem;
+}
+.msg-attachment-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.5rem;
+  background: var(--glass-fill);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+.msg-attachment-chip img {
+  width: 22px;
+  height: 22px;
+  object-fit: cover;
+  border-radius: 5px;
+}

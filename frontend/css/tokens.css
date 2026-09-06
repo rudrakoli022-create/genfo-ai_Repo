@@ -1,0 +1,121 @@
+/* ==========================================================================
+   GENFO AI — DESIGN TOKENS
+   Aurora-plasma dark theme. Every other stylesheet derives from this file.
+   ========================================================================== */
+
+:root {
+  /* ---- Surface ---------------------------------------------------- */
+  --bg-void:        #05060a;   /* deepest background */
+  --bg-base:        #0a0c14;   /* primary page background */
+  --bg-raised:      #11141f;   /* cards, panels */
+  --bg-raised-2:    #161a28;   /* nested panels, inputs */
+  --bg-overlay:     rgba(10, 12, 20, 0.72);
+
+  /* ---- Glass --------------------------------------------------------- */
+  --glass-fill:     rgba(255, 255, 255, 0.045);
+  --glass-fill-hi:  rgba(255, 255, 255, 0.085);
+  --glass-border:   rgba(255, 255, 255, 0.09);
+  --glass-border-hi:rgba(255, 255, 255, 0.16);
+
+  /* ---- Aurora accent ramp (teal -> violet -> magenta) ---------------- */
+  --aurora-teal:    #2ee6c9;
+  --aurora-cyan:    #4fd2ff;
+  --aurora-violet:  #8c6bff;
+  --aurora-magenta: #e154d6;
+  --aurora-ember:   #ff8b5c;
+
+  --aurora-gradient: linear-gradient(120deg, var(--aurora-teal) 0%, var(--aurora-cyan) 28%, var(--aurora-violet) 62%, var(--aurora-magenta) 100%);
+  --aurora-gradient-soft: linear-gradient(120deg, rgba(46,230,201,0.5) 0%, rgba(79,210,255,0.4) 30%, rgba(140,107,255,0.45) 65%, rgba(225,84,214,0.4) 100%);
+
+  /* ---- Text ------------------------------------------------------- */
+  --text-primary:   #f3f5fb;
+  --text-secondary: #aab0c4;
+  --text-tertiary:  #6c7388;
+  --text-on-accent: #04060a;
+
+  /* ---- Semantic ----------------------------------------------------- */
+  --color-success:  #36e0a0;
+  --color-error:    #ff5c7a;
+  --color-warning:  #ffb454;
+  --color-info:     var(--aurora-cyan);
+
+  /* ---- Borders / dividers -------------------------------------------- */
+  --border-subtle:  rgba(255, 255, 255, 0.07);
+  --border-default: rgba(255, 255, 255, 0.12);
+
+  /* ---- Typography ----------------------------------------------------- */
+  --font-display: "Space Grotesk", "Sora", "Inter", system-ui, sans-serif;
+  --font-body:     "Inter", -apple-system, "Segoe UI", system-ui, sans-serif;
+  --font-mono:     "JetBrains Mono", "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --fs-display-xl: clamp(2.75rem, 6vw, 5.25rem);
+  --fs-display-lg: clamp(2.25rem, 4.4vw, 3.5rem);
+  --fs-display-md: clamp(1.75rem, 3vw, 2.5rem);
+  --fs-h1: 2.25rem;
+  --fs-h2: 1.75rem;
+  --fs-h3: 1.25rem;
+  --fs-body-lg: 1.125rem;
+  --fs-body: 1rem;
+  --fs-body-sm: 0.875rem;
+  --fs-caption: 0.75rem;
+
+  --lh-tight: 1.08;
+  --lh-snug: 1.3;
+  --lh-normal: 1.6;
+
+  --ls-tight: -0.03em;
+  --ls-normal: -0.01em;
+  --ls-wide: 0.08em;
+
+  /* ---- Spacing scale (4px base) ---------------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 2.5rem;
+  --space-8: 3rem;
+  --space-9: 4rem;
+  --space-10: 5rem;
+  --space-12: 7rem;
+
+  /* ---- Radius -------------------------------------------------------- */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* ---- Shadow / glow --------------------------------------------------- */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.36);
+  --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.46);
+  --glow-teal:    0 0 0 1px rgba(46,230,201,0.4), 0 0 24px rgba(46,230,201,0.25);
+  --glow-violet:  0 0 0 1px rgba(140,107,255,0.4), 0 0 28px rgba(140,107,255,0.28);
+  --glow-focus:   0 0 0 1px rgba(79,210,255,0.55), 0 0 0 4px rgba(79,210,255,0.16);
+  --glow-error:   0 0 0 1px rgba(255,92,122,0.55), 0 0 0 4px rgba(255,92,122,0.16);
+
+  /* ---- Motion -------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 140ms;
+  --dur-base: 240ms;
+  --dur-slow: 480ms;
+  --dur-aurora: 18s;
+
+  /* ---- Layout -------------------------------------------------------- */
+  --container-max: 1180px;
+  --sidebar-w: 264px;
+  --sidebar-w-collapsed: 76px;
+  --header-h: 76px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+    --dur-aurora: 0ms;
+  }
+}
